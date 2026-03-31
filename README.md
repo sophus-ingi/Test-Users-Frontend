@@ -47,6 +47,49 @@ export const baseUrl = 'http://your-api-url:port';
 - Verify the backend is running on port 8080
 - Test with: `curl http://localhost:8080/person` (or PowerShell: `Invoke-WebRequest http://localhost:8080/person`)
 
+## Testing
+
+This project includes comprehensive frontend unit tests using Jest.
+
+### Setup
+Install dependencies:
+```bash
+npm install
+```
+
+### Running Tests
+
+**Run all tests:**
+```bash
+npm test
+```
+
+**Run tests in watch mode (re-run on file changes):**
+```bash
+npm run test:watch
+```
+
+**Generate coverage report:**
+```bash
+npm run test:coverage
+```
+
+### Test Coverage
+
+The test suite covers:
+- ✅ Form submission (single and multiple persons)
+- ✅ All partial data options (CPR, name, gender, etc.)
+- ✅ Data rendering for each field type
+- ✅ API error handling and user feedback
+- ✅ Template cloning and DOM manipulation
+- ✅ Edge cases (missing fields, multiple submissions, etc.)
+
+Current coverage threshold: 70% (branches, functions, lines, statements)
+
+### Test Files
+- `__tests__/setup.js` - Common test setup and DOM utilities
+- `__tests__/script.test.js` - Main application logic tests (100+ test cases)
+
 ## Tools
 JavaScript / CSS3 / HTML5
 
