@@ -51,7 +51,29 @@ export const baseUrl = 'http://your-api-url:port';
 
 This project includes comprehensive testing with **250+ test cases** across multiple layers.
 
-### Quick Start
+### ⚡ Quick Commands (Copy & Paste)
+
+```bash
+# First time setup
+npm install
+
+# Run tests (most common)
+npm test
+
+# Watch mode - auto-rerun when files change
+npm run test:watch
+
+# See coverage report
+npm run test:coverage
+
+# Run E2E tests (needs backend)
+npm run test:e2e
+
+# Check code quality
+npm run lint
+```
+
+### Full Setup
 
 **Install dependencies:**
 ```bash
@@ -72,26 +94,17 @@ The project implements a 4-layer testing approach:
 3. **E2E Tests** (35+ tests) - Real user workflows
 4. **Black-Box Tests** (78+ cases) - Professional QA techniques
 
-### Running Different Test Types
+### Running Specific Test Types
 
-**Run unit & integration tests:**
-```bash
-npm test
-npm run test:watch      # Auto-rerun on changes
-npm run test:coverage   # With coverage report
-```
-
-**Run E2E tests (requires backend running):**
-```bash
-npm run test:e2e
-npm run test:e2e:ui     # Interactive mode
-```
-
-**Code quality checks:**
-```bash
-npm run lint            # ESLint checks
-npm audit               # Security audit
-```
+| Command | What It Does |
+|---------|-------------|
+| `npm test` | Run all unit & integration tests |
+| `npm run test:watch` | Auto-rerun tests as you code |
+| `npm run test:coverage` | Generate coverage report (HTML) |
+| `npm run test:e2e` | Run end-to-end tests (needs backend) |
+| `npm run test:e2e:ui` | E2E tests in interactive mode |
+| `npm run lint` | Check code quality (ESLint) |
+| `npm audit` | Security vulnerability check |
 
 ### Test Coverage
 
