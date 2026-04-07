@@ -8,7 +8,6 @@ on:
       - 'css/**'
       - 'index.html'
       - '__tests__/**'
-      - 'e2e/**'
       - 'package.json'
       - '.github/workflows/**'
   pull_request:
@@ -18,7 +17,6 @@ on:
       - 'css/**'
       - 'index.html'
       - '__tests__/**'
-      - 'e2e/**'
       - 'package.json'
 
 jobs:
@@ -78,75 +76,6 @@ jobs:
       - name: Security audit
         run: npm audit --production
         continue-on-error: true
-
-  e2e-tests:
-    name: E2E Tests
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-      
-      - name: Start backend (mock)
-        run: |
-          # Create a simple mock server on 8080
-          python3 -c "
-          import http.server
-          import socketserver
-          import json
-          import threading
-          
-          class MockHandler(http.server.SimpleHTTPRequestHandler):
-              def do_GET(self):
-                  self.send_response(200)
-                  self.send_header('Content-type', 'application/json')
-                  self.send_header('Access-Control-Allow-Origin', '*')
-                  self.end_headers()
-                  
-                  response = {}
-                  if '/person' in self.path:
-                      response = {'CPR': '0911895255', 'firstName': 'John', 'lastName': 'Doe', 'gender': 'Male', 'birthDate': '1990-01-15'}
-                  elif '/cpr' in self.path:
-                      response = {'CPR': '0911895255'}
-                  elif '/phone' in self.path:
-                      response = {'phoneNumber': '+45 12345678'}
-                  elif '/address' in self.path:
-                      response = {'street': 'Main Street', 'number': '123', 'floor': 1, 'door': 'A', 'postal_code': '2100', 'town_name': 'Copenhagen'}
-                  
-                  self.wfile.write(json.dumps(response).encode())
-          
-          with socketserver.TCPServer(('', 8080), MockHandler) as httpd:
-              server_thread = threading.Thread(target=httpd.serve_forever)
-              server_thread.daemon = True
-              server_thread.start()
-              import time
-              time.sleep(30)
-          " &
-          sleep 2
-      
-      - name: Run E2E tests
-        run: npm run test:e2e
-        continue-on-error: true
-      
-      - name: Upload Playwright report
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
 
   build-check:
     name: Build Verification

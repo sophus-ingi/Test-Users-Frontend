@@ -66,9 +66,6 @@ npm run test:watch
 # See coverage report
 npm run test:coverage
 
-# Run E2E tests (needs backend)
-npm run test:e2e
-
 # Check code quality
 npm run lint
 ```
@@ -87,12 +84,13 @@ npm test
 
 ### Test Strategy
 
-The project implements a 4-layer testing approach:
+The project implements a 3-layer testing approach:
 
 1. **Unit Tests** (150+ tests) - Individual functions and utilities
 2. **Integration Tests** (45+ tests) - Components working together
-3. **E2E Tests** (35+ tests) - Real user workflows
-4. **Black-Box Tests** (78+ cases) - Professional QA techniques
+3. **Black-Box Tests** (78+ cases) - Professional QA techniques
+
+*Note: E2E tests are maintained in a separate repository*
 
 ### Running Specific Test Types
 
@@ -101,8 +99,6 @@ The project implements a 4-layer testing approach:
 | `npm test` | Run all unit & integration tests |
 | `npm run test:watch` | Auto-rerun tests as you code |
 | `npm run test:coverage` | Generate coverage report (HTML) |
-| `npm run test:e2e` | Run end-to-end tests (needs backend) |
-| `npm run test:e2e:ui` | E2E tests in interactive mode |
 | `npm run lint` | Check code quality (ESLint) |
 | `npm audit` | Security vulnerability check |
 
@@ -118,7 +114,6 @@ The project implements a 4-layer testing approach:
 - `__tests__/form.test.js` - Form/DOM (40 tests)
 - `__tests__/integration.test.js` - Workflows (45 tests)
 - `__tests__/script.test.js` - Main script (30 tests)
-- `e2e/frontend.spec.js` - E2E tests (35 tests)
 
 ### Documentation
 
@@ -139,9 +134,6 @@ Tests automatically run on:
 - ✅ Unit tests (3 Node versions)
 - ✅ ESLint code quality
 - ✅ Security audit
-- ✅ E2E tests
-- ✅ Build verification
-- ✅ Accessibility checks
 
 ### Test Categories Covered
 

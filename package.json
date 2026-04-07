@@ -7,15 +7,12 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
     "lint": "eslint js/",
     "lint:fix": "eslint js/ --fix",
     "audit": "npm audit"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.0",
-    "@playwright/test": "^1.40.0",
     "@testing-library/dom": "^9.3.3",
     "@testing-library/jest-dom": "^6.1.4",
     "babel-jest": "^29.7.0",
